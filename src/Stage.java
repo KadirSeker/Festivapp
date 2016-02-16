@@ -29,4 +29,9 @@ public class Stage {
 		return name;
 	}
 	
+	public void setName(String n)
+	{
+		name = n;
+	}
+	
 }

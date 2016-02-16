@@ -28,7 +28,20 @@ public class Artist {
 	
 	
 	
+	public void setName(String n)
+	{
+		name = n;
+	}
 	
+	public void setGenre(String g)
+	{
+		genre = g;
+	}
+	
+	public void setPopularity(double p)
+	{
+		popularity = p;
+	}
 	
 	public String getName()
 	{
