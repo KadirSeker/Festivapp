@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,6 +13,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -20,8 +23,13 @@ public class MainFrame_Gui extends JFrame {
 	private JFrame frame;
 	private JMenu[] menuItems;
 	private JMenuBar menuBar;
+	
+	private JTable agendaTable;
+	
 	private Agenda agenda = new Agenda();
+	
 	private Dimension textFieldSize = new Dimension(120,25);
+	private Dimension screenSize = new Dimension((int)(Toolkit.getDefaultToolkit().getScreenSize().width/1.5),(int)(Toolkit.getDefaultToolkit().getScreenSize().height/1.5));
 
 	/**
 	 * Launch the application.
@@ -49,7 +57,7 @@ public class MainFrame_Gui extends JFrame {
 	private void initialize() 
 	{
 		frame = new JFrame("FestiFapp");
-		frame.setBounds(100, 100, 800, 600);
+		frame.setSize(screenSize);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		
@@ -74,14 +82,21 @@ public class MainFrame_Gui extends JFrame {
 		JPanel agendaPanel = new JPanel(); 			// left pannel for agenda
 		JPanel datePanel = new JPanel();			// bottom panel for the date of festival
 		JPanel infoPanel = new JPanel();			// right panel for  extra information
+		JScrollPane scrollPane = new JScrollPane();	// TODO fix relativity of scrollpane to screen
+		
+		JLabel festivalDate = new JLabel("Festival Date: " + agenda.getFestivalDate() , JLabel.CENTER);
+		
 		content.setLayout(new BorderLayout());
 		content.add(agendaPanel, BorderLayout.CENTER);
 		content.add(datePanel, BorderLayout.SOUTH);
 		content.add(infoPanel, BorderLayout.EAST);
 		
-		JLabel festivalDate = new JLabel("Festival Date: " + agenda.getFestivalDate() , JLabel.CENTER);
 		datePanel.add(festivalDate); //TODO need to fix the date of festival.
 		
+		generateAgenda();
+		scrollPane.getViewport().add(agendaTable);
+		//scrollPane.setPreferredSize(preferredSize);
+		agendaPanel.add(scrollPane);
 		
 		
 		frame.setContentPane(content);
@@ -310,7 +325,7 @@ public class MainFrame_Gui extends JFrame {
             double popularity = Double.parseDouble(popInput);
             Artist artist = new Artist(nameInput,genreInput,popularity);
             agenda.addArtist(artist);
-            System.out.println(artist.getName()+ artist.getGenre() + artist.getPopularity());
+            //System.out.println(artist.getName()+ artist.getGenre() + artist.getPopularity());
             }
             else
             {
@@ -336,7 +351,40 @@ public class MainFrame_Gui extends JFrame {
 	}
 	
 	private void addStage()
+	{}
+
+	private void generateAgenda()
 	{
+	  agendaTable = new JTable(getRows(),getCollums());	
+	  
+	  
+	}
+	
+	
+	//TODO switch return values of rows and collums depending on where we want the time!!!
+	
+	/*
+	 * returns the amount of rows that the agenda needs 
+	 * 1 row for the times and the rest is the amounth of stages
+	 */
+	private int getCollums()
+	{
+		return 1 + agenda.getStages().size();
 		
 	}
+	
+	/*
+	 * return the ammount of collums that the agenda needs
+	 * 49 stands for 1 collum of stages and 48 parts of half hours
+	 */
+	private int getRows()
+	{
+		return 49;
+	}
+	
+	
+	
+	
+	
+	
 }

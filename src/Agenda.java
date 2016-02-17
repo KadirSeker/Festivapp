@@ -60,7 +60,7 @@ public class Agenda {
 			   festivalDate.get(GregorianCalendar.DAY_OF_MONTH);
 	}
 	
-	public ArrayList<Performance> getShows()
+	public ArrayList<Performance> getPerformances()
 	{
 		return performances;
 	}
