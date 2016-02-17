@@ -1,7 +1,10 @@
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -10,13 +13,15 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
-public class MainFrame_Gui {
+public class MainFrame_Gui extends JFrame {
 
 	private JFrame frame;
 	private JMenu[] menuItems;
 	private JMenuBar menuBar;
 	private Agenda agenda = new Agenda();
+	private Dimension textFieldSize = new Dimension(120,25);
 
 	/**
 	 * Launch the application.
@@ -45,7 +50,7 @@ public class MainFrame_Gui {
 	{
 		frame = new JFrame("FestiFapp");
 		frame.setBounds(100, 100, 800, 600);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		
 		menuBar = new JMenuBar();
@@ -66,16 +71,18 @@ public class MainFrame_Gui {
 			menuBar.add(menuItems[i]);
 		
 		JPanel content = new JPanel();
-		JPanel agendaPanel = new JPanel();
-		JPanel datePanel = new JPanel();
+		JPanel agendaPanel = new JPanel(); 			// left pannel for agenda
+		JPanel datePanel = new JPanel();			// bottom panel for the date of festival
+		JPanel infoPanel = new JPanel();			// right panel for  extra information
 		content.setLayout(new BorderLayout());
-		content.add(agendaPanel, BorderLayout.NORTH);
+		content.add(agendaPanel, BorderLayout.CENTER);
 		content.add(datePanel, BorderLayout.SOUTH);
+		content.add(infoPanel, BorderLayout.EAST);
 		
 		JLabel festivalDate = new JLabel("Festival Date: " + agenda.getFestivalDate() , JLabel.CENTER);
-		datePanel.add(festivalDate);
+		datePanel.add(festivalDate); //TODO need to fix the date of festival.
 		
-		//TODO add the agenda somewhere here
+		
 		
 		frame.setContentPane(content);
 		frame.revalidate();
@@ -160,8 +167,8 @@ public class MainFrame_Gui {
 		subMenuItems[1].setText("Add Artist");
 		subMenuItems[1].addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                System.exit(0);
-              //TODO make this a usefullthing
+            
+                addArtist();
             }
         });
 		
@@ -214,6 +221,7 @@ public class MainFrame_Gui {
 	}
 	
 	private void fillDelete()
+
 	{
 		JMenuItem[]	subMenuItems = new JMenuItem[3]; 
 		subMenuItems[0] = new JMenuItem();
@@ -245,5 +253,90 @@ public class MainFrame_Gui {
 		
 		for (int i = 0; i < 3; i++)
 			menuItems[4].add(subMenuItems[i]);
+	}
+	
+	private void createNewFestival()
+	{
+		//TODO write it
+	}
+	
+	private void addPerformance()
+	{
+		//TODO write it
+	}
+	
+	private void addArtist()
+	{
+		JFrame addFrame = new JFrame("Add Artist");
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		addFrame.setVisible(true);
+		addFrame.setSize(400, 200);
+		addFrame.setResizable(false);
+		
+		
+		JTextArea name = new JTextArea();
+		JTextArea genre = new JTextArea();
+		JTextArea pop = new JTextArea();
+		name.setEditable(false);
+		genre.setEditable(false);
+		pop.setEditable(false);
+		name.setText("Please enter the Artist name");
+		genre.setText("Please Enter the music Genre");
+		pop.setText("Please Enter the Artist Popularity");
+		
+		//TODO SET BOUNDS FOR ALL THE FIELDS SO ITS NICE
+		
+		JTextField nameField = new JTextField(); 
+		nameField.setPreferredSize(textFieldSize);
+		JTextField genreField = new JTextField();
+		genreField.setPreferredSize(textFieldSize);
+		JTextField popField = new JTextField();
+		popField.setPreferredSize(textFieldSize);
+		
+		JButton button = new JButton();
+		button.setPreferredSize(textFieldSize);
+		button.setText("Add Artist");
+		button.addActionListener(new ActionListener() {
+        
+        public void actionPerformed(ActionEvent event) {
+            String nameInput = nameField.getText();
+            String genreInput = genreField.getText();
+            String popInput = popField.getText();
+            
+         
+            
+            if(nameInput.length() > 0 && genreInput.length() > 0 && popInput.length() > 0 && popInput.matches("[0-9]"))
+            {
+            double popularity = Double.parseDouble(popInput);
+            Artist artist = new Artist(nameInput,genreInput,popularity);
+            agenda.addArtist(artist);
+            System.out.println(artist.getName()+ artist.getGenre() + artist.getPopularity());
+            }
+            else
+            {
+            	JOptionPane.showMessageDialog(addFrame, "One of the Fields is not filled in correctly Artist is not saved!");
+            }
+            
+        }
+    });
+		
+		
+		JPanel content = new JPanel(new FlowLayout());
+		content.add(name);
+		content.add(nameField);
+		content.add(genre);
+		content.add(genreField);
+		content.add(pop);	
+		content.add(popField);
+		content.add(button);
+		addFrame.setContentPane(content);
+		
+		
+		
+	}
+	
+	private void addStage()
+	{
+		
 	}
 }
