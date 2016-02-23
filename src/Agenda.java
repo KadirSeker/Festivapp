@@ -1,6 +1,7 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.jar.Attributes.Name;
 
 /**
  * The agenda for a festival.
@@ -99,8 +100,37 @@ public class Agenda implements Serializable
 		return stages;
 	}
 	
+	
 	public ArrayList<Artist> getArtists()
 	{
 		return artists;
+	}
+	
+	/**
+	 * 
+	 * @return an arraylist of all artist names
+	 */
+	public ArrayList<String> getNamesOfArtist()
+	{
+		ArrayList<String> names = new ArrayList<String>();
+		for(Artist a :artists)
+		{
+			names.add(a.getName());
+		}
+		return names;
+	}
+	
+	/**
+	 * 
+	 * @return an arraylist of all stage names
+	 */
+	public ArrayList<String> getNamesOfStages()
+	{
+		ArrayList<String> names = new ArrayList<String>();
+		for(Stage s :stages)
+		{
+			names.add(s.getName());
+		}
+		return names;
 	}
 }

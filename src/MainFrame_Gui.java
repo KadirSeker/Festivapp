@@ -5,6 +5,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -285,7 +286,7 @@ public class MainFrame_Gui
 
 	private void addStage()
 	{
-		JFrame addStageFrame = new JFrame();
+		JFrame addStageFrame = new JFrame("Add stage");
 		
 		
 		addStageFrame.addWindowListener(new java.awt.event.WindowAdapter()
@@ -303,18 +304,38 @@ public void windowClosing(java.awt.event.WindowEvent windowEvent)
 		addStageFrame.setVisible(true);
 		addStageFrame.getContentPane().setLayout(null);
 		
-		JTextField textField_5 = new JTextField();
-		textField_5.setBounds(118, 16, 116, 22);
-		addStageFrame.getContentPane().add(textField_5);
-		textField_5.setColumns(10);
+		JTextField inputField = new JTextField();
+		inputField.setBounds(118, 16, 116, 22);
+		addStageFrame.getContentPane().add(inputField);
+		inputField.setColumns(10);
 		
-		JLabel lblAddStage = new JLabel("Add Stage");
-		lblAddStage.setBounds(12, 19, 116, 16);
-		addStageFrame.getContentPane().add(lblAddStage);
+		JLabel addStageLabel = new JLabel("Add Stage");
+		addStageLabel.setBounds(12, 19, 116, 16);
+		addStageFrame.getContentPane().add(addStageLabel);
 		
-		JButton btnAdd = new JButton("Add");
-		btnAdd.setBounds(269, 15, 74, 25);
-		addStageFrame.getContentPane().add(btnAdd);
+		JButton addButton = new JButton("Add");
+		addButton.setBounds(269, 15, 74, 25);
+		addButton.addActionListener(new ActionListener()
+				{
+			public void actionPerformed(ActionEvent event) 
+			{
+				String stageName = inputField.getText();
+				if(stageName.length() > 0)
+				{
+					agenda.addStage(new Stage(stageName));
+					addStageFrame.dispose();
+					JOptionPane.showMessageDialog(addStageFrame, "Stage is saved");
+					
+					
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(addStageFrame, "One of the Fields is not filled in correctly Stage is not saved!");
+				}
+			}
+				}
+				);
+		addStageFrame.getContentPane().add(addButton);
 	}
 
 	private void addArtist()
@@ -371,7 +392,9 @@ public void windowClosing(java.awt.event.WindowEvent windowEvent)
             double popularity = Double.parseDouble(popInput);
             Artist artist = new Artist(nameInput,genreInput,popularity);
             agenda.addArtist(artist);
+            JOptionPane.showMessageDialog(addArtistFrame, "Artist is saved");
             //System.out.println(artist.getName()+ artist.getGenre() + artist.getPopularity());
+            addArtistFrame.dispose();
             }
             else
             {
@@ -399,9 +422,10 @@ public void windowClosing(java.awt.event.WindowEvent windowEvent)
 	private void addPerformance()
 	{
 		
+		Performance performance = new Performance();
 		
 		
-		JFrame addPerformanceFrame = new JFrame();
+		JFrame addPerformanceFrame = new JFrame("Add Performance");
 		addPerformanceFrame.addWindowListener(new java.awt.event.WindowAdapter()
 				{
 		public void windowClosing(java.awt.event.WindowEvent windowEvent)
@@ -418,55 +442,19 @@ public void windowClosing(java.awt.event.WindowEvent windowEvent)
 		
 		addPerformanceFrame.getContentPane().setLayout(null);
 		
-		JLabel lblAddArtistTo = new JLabel("add artist to performance");
+		JLabel lblAddArtistTo = new JLabel("Add artist to performance");
 		lblAddArtistTo.setBounds(12, 41, 203, 16);
 		addPerformanceFrame.getContentPane().add(lblAddArtistTo);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(227, 41, 95, 22);
-		addPerformanceFrame.getContentPane().add(comboBox);
-		
-		JLabel lblUnaddArtistTo = new JLabel("unadd artist to performance");
+		/**
+		JLabel lblUnaddArtistTo = new JLabel("Delete artist to performance");
 		lblUnaddArtistTo.setBounds(12, 73, 203, 16);
 		addPerformanceFrame.getContentPane().add(lblUnaddArtistTo);
-		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(227, 73, 95, 22);
-		addPerformanceFrame.getContentPane().add(comboBox_1);
-		
-		JButton btnAdd = new JButton("add");
-		btnAdd.setBounds(334, 41, 88, 25);
-		addPerformanceFrame.getContentPane().add(btnAdd);
-		
-		JButton btnRemove = new JButton("Remove");
-		btnRemove.setBounds(334, 73, 88, 25);
-		addPerformanceFrame.getContentPane().add(btnRemove);
-		
-		JLabel lblAddedArtistos = new JLabel("Performing artists");
-		lblAddedArtistos.setBounds(444, 13, 95, 16);
-		addPerformanceFrame.getContentPane().add(lblAddedArtistos);
-		
-		JLabel lblArtist = new JLabel("artist+ 20");
-		lblArtist.setBounds(444, 41, 56, 16);
-		addPerformanceFrame.getContentPane().add(lblArtist);
-		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setBounds(109, 121, 95, 22);
-		addPerformanceFrame.getContentPane().add(comboBox_2);
+		**/
 		
 		JLabel lblStage = new JLabel("stage");
 		lblStage.setBounds(12, 124, 56, 16);
 		addPerformanceFrame.getContentPane().add(lblStage);
-		
-		JTextField textField_3 = new JTextField();
-		textField_3.setBounds(109, 179, 116, 22);
-		addPerformanceFrame.getContentPane().add(textField_3);
-		textField_3.setColumns(10);
-		
-		JTextField textField_4 = new JTextField();
-		textField_4.setBounds(336, 179, 116, 22);
-		addPerformanceFrame.getContentPane().add(textField_4);
-		textField_4.setColumns(10);
 		
 		JLabel lblStartTime = new JLabel("Start Time");
 		lblStartTime.setBounds(12, 182, 85, 16);
@@ -476,8 +464,121 @@ public void windowClosing(java.awt.event.WindowEvent windowEvent)
 		lblEndtime.setBounds(247, 182, 56, 16);
 		addPerformanceFrame.getContentPane().add(lblEndtime);
 		
+		
+		
+		
+		
+		JComboBox addArtistBox = new JComboBox();
+		addArtistBox.setBounds(227, 41, 95, 22);
+		addArtistBox.setModel(new DefaultComboBoxModel(agenda.getNamesOfArtist().toArray()));
+		addPerformanceFrame.getContentPane().add(addArtistBox);
+		
+		/**
+		JComboBox deleteArtistBox = new JComboBox();
+		deleteArtistBox.setBounds(227, 73, 95, 22);
+		deleteArtistBox.setModel(new DefaultComboBoxModel(performance.getNamesOfArtist().toArray()));
+		addPerformanceFrame.getContentPane().add(deleteArtistBox);
+		**/
+		
+		JComboBox stageBox = new JComboBox();
+		stageBox.setBounds(109, 121, 95, 22);
+		stageBox.setModel(new DefaultComboBoxModel(agenda.getNamesOfStages().toArray()));
+		addPerformanceFrame.getContentPane().add(stageBox);
+
+		
+		JTextField startTimeField = new JTextField();
+		startTimeField.setBounds(109, 179, 116, 22);
+		addPerformanceFrame.getContentPane().add(startTimeField);
+		startTimeField.setColumns(5);
+		
+		JTextField endTimeField = new JTextField();
+		endTimeField.setBounds(336, 179, 116, 22);
+		addPerformanceFrame.getContentPane().add(endTimeField);
+		endTimeField.setColumns(5);
+		
+		/**
+		
+		JButton btnAdd = new JButton("S");
+		btnAdd.setBounds(334, 41, 88, 25);
+		btnAdd.addActionListener(new ActionListener()
+		{
+			//TODO fix IOOB error here
+			public void actionPerformed(ActionEvent e)
+			{
+				if(deleteArtistBox.getItemCount() < 1)
+				{
+				performance.addArtist(agenda.getArtists().get(addArtistBox.getSelectedIndex()));
+				deleteArtistBox.addItem(performance.getArtists().get(addArtistBox.getSelectedIndex()).getName());
+				//System.out.println(performance.getArtists().size());
+				}
+			}
+		});
+		addPerformanceFrame.getContentPane().add(btnAdd);
+		
+		JButton btnRemove = new JButton("Remove");
+		btnRemove.setBounds(334, 73, 88, 25);
+		btnRemove.addActionListener(new ActionListener() 
+		{
+
+			public void actionPerformed(ActionEvent e) 
+			{
+				if(deleteArtistBox.getItemCount() > 0)
+				{
+				performance.removeArtist(deleteArtistBox.getSelectedIndex());
+				deleteArtistBox.removeItemAt(deleteArtistBox.getSelectedIndex());
+				System.out.println("Deleted artist");
+				}
+				
+			}
+		});
+		addPerformanceFrame.getContentPane().add(btnRemove);
+		
+		
+		
+		**/
+		
+		
+		
+		
 		JButton btnDone = new JButton("Done");
 		btnDone.setBounds(489, 215, 97, 25);
+		btnDone.addActionListener(new ActionListener()
+		{
+			
+			public void actionPerformed(ActionEvent e)
+			{
+				boolean isCorrectlyFilled = true;
+				//performance.getArtists().isEmpty()|| 
+				if(startTimeField.getText().isEmpty() || endTimeField.getText().isEmpty())
+						{
+							isCorrectlyFilled = false;
+						}
+				
+				//System.out.println(isCorrectlyFilled);
+				
+				
+				if(isCorrectlyFilled)
+				{
+					Time startTime = new Time(startTimeField.getText());
+					Time endTime = new Time(endTimeField.getText());
+					performance.setStage(agenda.getStages().get(stageBox.getSelectedIndex()));
+					performance.addArtist(agenda.getArtists().get(addArtistBox.getSelectedIndex()));
+					performance.setStartTime(startTime);
+					performance.setEndTime(endTime);
+					agenda.addShow(performance);
+					JOptionPane.showMessageDialog(addPerformanceFrame, "Performance is saved");
+					
+					//System.out.println("Stage:  " + performance.getStage().getName() + "/n Times:  " + performance.getStartTime().getTime() + "  "+ performance.getEndTime().getTime()
+							//+ "Artist  " + performance.getArtists().get(0).getName());
+					addPerformanceFrame.dispose();
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(addPerformanceFrame, "One of the fields is not filled corectly, stage has not been saved!");
+				}
+				
+			}
+		});
 		addPerformanceFrame.getContentPane().add(btnDone);
 		
 		
@@ -538,6 +639,7 @@ public void windowClosing(java.awt.event.WindowEvent windowEvent)
 	private void generateAgenda()
 	{
 		agendaTable = new JTable(getRows(), getCollums());
+		//TODO make new JTable if rows or such change
 
 	}
 

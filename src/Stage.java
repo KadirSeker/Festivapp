@@ -11,7 +11,6 @@ public class Stage implements Serializable
 {
 
 	private String name;
-	//TODO add dimension?
 	
 	public Stage()
 	{

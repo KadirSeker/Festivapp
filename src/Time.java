@@ -1,3 +1,9 @@
+/**
+ * Time class to use as time unit for the agenda.
+ * @author Joshua
+ *
+ */
+
 public class Time
 {
 
@@ -102,7 +108,7 @@ public class Time
      */
     public boolean isOverlapping(Time beginT1,Time endT1,Time beginT2, Time endT2)
     {
-        // more readable for the ifstatement
+        // more readable for the if statement
         int sT1 = beginT1.timeToMins();
         int sT2 = beginT2.timeToMins();
         int eT1 = endT1.timeToMins();
@@ -118,6 +124,20 @@ public class Time
         return true;
         }
         return false;
+    }
+    
+    /**
+     * 
+     * @param t1 first time object 
+     * @param t2 second time object to compare to
+     * @return return true if t1 > t2 else false
+     */
+    public boolean isLonger(Time t1, Time t2)
+    {
+    	if(t1.timeToMins() > t2.timeToMins())
+    		return true;
+    	
+    	return false;
     }
     
 }

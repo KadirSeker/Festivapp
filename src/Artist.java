@@ -12,7 +12,6 @@ public class Artist implements Serializable
 	private String name;
 	private String genre;
 	private double popularity;
-	//TODO here comes an image of artist?
 	
 	public Artist()
 	{

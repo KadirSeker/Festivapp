@@ -28,8 +28,8 @@ public class Performance implements Serializable {
 	/**
 	 * 
 	 * @param s 	an stage object
-	 * @param startTime 	an GregorianCalendar StartTime
-	 * @param endTime		an GregorianCalendar EndTime
+	 * @param startTime 	an Time StartTime
+	 * @param endTime		an Time EndTime
 	 */
 	public Performance(Stage s,Time startTime, Time endTime)
 	{
@@ -55,6 +55,32 @@ public class Performance implements Serializable {
 		artists.add(a);
 	}
 	
+	/**
+	 * 
+	 * @param s stage object
+	 */
+	public void setStage(Stage s)
+	{
+		stage = s;
+	}
+	
+	public void setStartTime(Time t)
+	{
+		startTime = t;
+	}
+	
+	public void setEndTime(Time t)
+	{
+		endTime = t;
+	}
+	
+	/**
+	 * @param i removes index i of the artist
+	 */
+	public void removeArtist(int i)
+	{
+		artists.remove(i);
+	}
 	
 	/**
 	 * 
@@ -90,6 +116,16 @@ public class Performance implements Serializable {
 	public Time getEndTime()
 	{
 		return endTime;
+	}
+	
+	public ArrayList<String> getNamesOfArtist()
+	{
+		ArrayList<String> names = new ArrayList<String>();
+		for(Artist a :artists)
+		{
+			names.add(a.getName());
+		}
+		return names;
 	}
 	
 }
