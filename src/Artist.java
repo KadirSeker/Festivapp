@@ -16,6 +16,12 @@ public class Artist {
 	
 	}
 	
+	/**
+	 * 
+	 * @param n Name
+	 * @param g Genre
+	 * @param p Popularity
+	 */
 	public Artist(String n, String g, double p)
 	{
 		name = n;

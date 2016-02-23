@@ -321,7 +321,7 @@ public class MainFrame_Gui extends JFrame {
          
             
             if(nameInput.length() > 0 && genreInput.length() > 0 && popInput.length() > 0 && popInput.matches("[0-9]"))
-            {
+            { //TODO fix the input can be 10 
             double popularity = Double.parseDouble(popInput);
             Artist artist = new Artist(nameInput,genreInput,popularity);
             agenda.addArtist(artist);

@@ -3,6 +3,8 @@ import java.util.GregorianCalendar;
 
 
 /**
+ * This class represents a performance.
+ * 
  * 
  * @author Joshua
  * @version 1.0
