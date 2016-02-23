@@ -20,7 +20,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class MainFrame_Gui extends JFrame
+public class MainFrame_Gui 
 {
 
 	private JFrame frame;
@@ -62,7 +62,7 @@ public class MainFrame_Gui extends JFrame
 	{
 		frame = new JFrame("FestiFapp");
 		frame.setSize(screenSize);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 
 		menuBar = new JMenuBar();
