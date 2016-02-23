@@ -60,7 +60,7 @@ public class MainFrame_Gui extends JFrame
 	 */
 	private void initialize()
 	{
-		frame = new JFrame("FestiFapp");
+		frame = new JFrame("Festivapp");
 		frame.setSize(screenSize);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		frame.setVisible(true);
@@ -168,7 +168,7 @@ public class MainFrame_Gui extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent event)
 			{
-				JOptionPane.showMessageDialog(frame, "This FestiFapp was developed by Project group A3.");
+				JOptionPane.showMessageDialog(frame, "This Festivapp was developed by Project group A3.");
 			}
 		});
 
@@ -291,9 +291,7 @@ public void windowClosing(java.awt.event.WindowEvent windowEvent)
 	closeFrame(addStageFrame);
 }
 		});
-		
-		
-		
+				
 		addStageFrame.setBounds(100, 100, 371, 103);
 		addStageFrame.setResizable(false);
 		addStageFrame.setVisible(true);
@@ -304,13 +302,13 @@ public void windowClosing(java.awt.event.WindowEvent windowEvent)
 		addStageFrame.getContentPane().add(textField_5);
 		textField_5.setColumns(10);
 		
-		JLabel lblAddStage = new JLabel("Add Stage");
-		lblAddStage.setBounds(12, 19, 116, 16);
-		addStageFrame.getContentPane().add(lblAddStage);
+		JLabel addStageLabel = new JLabel("Add Stage");
+		addStageLabel.setBounds(12, 19, 116, 16);
+		addStageFrame.getContentPane().add(addStageLabel);
 		
-		JButton btnAdd = new JButton("Add");
-		btnAdd.setBounds(269, 15, 74, 25);
-		addStageFrame.getContentPane().add(btnAdd);
+		JButton addButton = new JButton("Add");
+		addButton.setBounds(269, 15, 74, 25);
+		addStageFrame.getContentPane().add(addButton);
 	}
 
 	private void addArtist()
@@ -333,13 +331,13 @@ public void windowClosing(java.awt.event.WindowEvent windowEvent)
 
 		JLabel name = new JLabel();
 		JLabel genre = new JLabel();
-		JLabel pop = new JLabel();
+		JLabel popularity = new JLabel();
 		name.setText("Please enter the Artist name");
 		genre.setText("Please Enter the music Genre");
-		pop.setText("Please Enter the Artist Popularity");
+		popularity.setText("Please Enter the Artist Popularity");
 		name.setBounds(12, 66, 200, 16);
 		genre.setBounds(12, 101, 200, 16);
-		pop.setBounds(12, 135, 200, 16);
+		popularity.setBounds(12, 135, 200, 16);
 		
 		// TODO SET BOUNDS FOR ALL THE FIELDS SO ITS NICE
 
@@ -347,8 +345,8 @@ public void windowClosing(java.awt.event.WindowEvent windowEvent)
 		nameField.setBounds(249, 63, 116, 22);
 		JTextField genreField = new JTextField();
 		genreField.setBounds(249, 98, 116, 22);
-		JTextField popField = new JTextField();
-		popField.setBounds(249, 132, 116, 22);
+		JTextField popularityField = new JTextField();
+		popularityField.setBounds(249, 132, 116, 22);
 
 		JButton button = new JButton();
 		button.setBounds(125, 192, 158, 48);
@@ -358,7 +356,7 @@ public void windowClosing(java.awt.event.WindowEvent windowEvent)
         public void actionPerformed(ActionEvent event) {
             String nameInput = nameField.getText();
             String genreInput = genreField.getText();
-            String popInput = popField.getText();
+            String popInput = popularityField.getText();
             
          
             
@@ -371,7 +369,7 @@ public void windowClosing(java.awt.event.WindowEvent windowEvent)
             }
             else
             {
-            	JOptionPane.showMessageDialog(addArtistFrame, "One of the Fields is not filled in correctly Artist is not saved!");
+            	JOptionPane.showMessageDialog(addArtistFrame, "One of the fields is not filled in correctly. Artist is not saved!");
             }
             
         }
@@ -385,8 +383,8 @@ public void windowClosing(java.awt.event.WindowEvent windowEvent)
 		content.add(nameField);
 		content.add(genre);
 		content.add(genreField);
-		content.add(pop);
-		content.add(popField);
+		content.add(popularity);
+		content.add(popularityField);
 		content.add(button);
 		addArtistFrame.setContentPane(content);
 
@@ -414,45 +412,45 @@ public void windowClosing(java.awt.event.WindowEvent windowEvent)
 		
 		addPerformanceFrame.getContentPane().setLayout(null);
 		
-		JLabel lblAddArtistTo = new JLabel("add artist to performance");
-		lblAddArtistTo.setBounds(12, 41, 203, 16);
-		addPerformanceFrame.getContentPane().add(lblAddArtistTo);
+		JLabel addArtistToLabel = new JLabel("add artist to performance");
+		addArtistToLabel.setBounds(12, 41, 203, 16);
+		addPerformanceFrame.getContentPane().add(addArtistToLabel);
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(227, 41, 95, 22);
 		addPerformanceFrame.getContentPane().add(comboBox);
 		
-		JLabel lblUnaddArtistTo = new JLabel("unadd artist to performance");
-		lblUnaddArtistTo.setBounds(12, 73, 203, 16);
-		addPerformanceFrame.getContentPane().add(lblUnaddArtistTo);
+		JLabel removeArtistFromLabel = new JLabel("unadd artist to performance");
+		removeArtistFromLabel.setBounds(12, 73, 203, 16);
+		addPerformanceFrame.getContentPane().add(removeArtistFromLabel);
 		
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setBounds(227, 73, 95, 22);
 		addPerformanceFrame.getContentPane().add(comboBox_1);
 		
-		JButton btnAdd = new JButton("add");
-		btnAdd.setBounds(334, 41, 88, 25);
-		addPerformanceFrame.getContentPane().add(btnAdd);
+		JButton addButton = new JButton("Add");
+		addButton.setBounds(334, 41, 88, 25);
+		addPerformanceFrame.getContentPane().add(addButton);
 		
-		JButton btnRemove = new JButton("Remove");
-		btnRemove.setBounds(334, 73, 88, 25);
-		addPerformanceFrame.getContentPane().add(btnRemove);
+		JButton removeButton = new JButton("Remove");
+		removeButton.setBounds(334, 73, 88, 25);
+		addPerformanceFrame.getContentPane().add(removeButton);
 		
-		JLabel lblAddedArtistos = new JLabel("Performing artists");
-		lblAddedArtistos.setBounds(444, 13, 95, 16);
-		addPerformanceFrame.getContentPane().add(lblAddedArtistos);
+		JLabel performingArtistsLabel = new JLabel("Performing artists");
+		performingArtistsLabel.setBounds(444, 13, 95, 16);
+		addPerformanceFrame.getContentPane().add(performingArtistsLabel);
 		
-		JLabel lblArtist = new JLabel("artist+ 20");
-		lblArtist.setBounds(444, 41, 56, 16);
-		addPerformanceFrame.getContentPane().add(lblArtist);
+		JLabel artistLabel = new JLabel("artist+ 20");
+		artistLabel.setBounds(444, 41, 56, 16);
+		addPerformanceFrame.getContentPane().add(artistLabel);
 		
 		JComboBox comboBox_2 = new JComboBox();
 		comboBox_2.setBounds(109, 121, 95, 22);
 		addPerformanceFrame.getContentPane().add(comboBox_2);
 		
-		JLabel lblStage = new JLabel("stage");
-		lblStage.setBounds(12, 124, 56, 16);
-		addPerformanceFrame.getContentPane().add(lblStage);
+		JLabel stageLabel = new JLabel("Stage");
+		stageLabel.setBounds(12, 124, 56, 16);
+		addPerformanceFrame.getContentPane().add(stageLabel);
 		
 		JTextField textField_3 = new JTextField();
 		textField_3.setBounds(109, 179, 116, 22);
@@ -464,23 +462,17 @@ public void windowClosing(java.awt.event.WindowEvent windowEvent)
 		addPerformanceFrame.getContentPane().add(textField_4);
 		textField_4.setColumns(10);
 		
-		JLabel lblStartTime = new JLabel("Start Time");
-		lblStartTime.setBounds(12, 182, 85, 16);
-		addPerformanceFrame.getContentPane().add(lblStartTime);
+		JLabel startTimeLabel = new JLabel("Start Time");
+		startTimeLabel.setBounds(12, 182, 85, 16);
+		addPerformanceFrame.getContentPane().add(startTimeLabel);
 		
-		JLabel lblEndtime = new JLabel("End Time");
-		lblEndtime.setBounds(247, 182, 56, 16);
-		addPerformanceFrame.getContentPane().add(lblEndtime);
+		JLabel endTimeLabel = new JLabel("End Time");
+		endTimeLabel.setBounds(247, 182, 56, 16);
+		addPerformanceFrame.getContentPane().add(endTimeLabel);
 		
-		JButton btnDone = new JButton("Done");
-		btnDone.setBounds(489, 215, 97, 25);
-		addPerformanceFrame.getContentPane().add(btnDone);
-		
-		
-		
-		
-		
-		
+		JButton doneButton = new JButton("Done");
+		doneButton.setBounds(489, 215, 97, 25);
+		addPerformanceFrame.getContentPane().add(doneButton);
 		
 	}
 
