@@ -1,16 +1,19 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 
 /**
  * This class represents a performance.
+ * a performance contains an x amount of artist
+ * 1 stage and 1 start and endTime
  * 
  * 
  * @author Joshua
  * @version 1.0
  *
  */
-public class Performance {
+public class Performance implements Serializable {
 	
 	private ArrayList<Artist> artists;
 	private Stage stage;
@@ -22,6 +25,12 @@ public class Performance {
 		
 	}
 	
+	/**
+	 * 
+	 * @param s 	an stage object
+	 * @param startTime 	an GregorianCalendar StartTime
+	 * @param endTime		an GregorianCalendar EndTime
+	 */
 	public Performance(Stage s,GregorianCalendar startTime, GregorianCalendar endTime)
 	{
 		artists = new ArrayList<Artist>();
@@ -38,28 +47,46 @@ public class Performance {
 	
 	
 	
-	
+	/**
+	 * @param a artist an artist object
+	 */
 	public void addArtist(Artist a)
 	{
 		artists.add(a);
 	}
 	
 	
+	/**
+	 * 
+	 * @return arraylist of all artists from the performance
+	 */
 	public ArrayList<Artist> getArtists()
 	{
 		return artists;
 	}
 	
+	/**
+	 * 
+	 * @return an stage object
+	 */
 	public Stage getStage()
 	{
 		return stage;
 	}
 	
+	/**
+	 * 
+	 * @return startTime
+	 */
 	public GregorianCalendar getStartTime()
 	{
 		return startTime;
 	}
 	
+	/**
+	 * 
+	 * @return endtime 
+	 */
 	public GregorianCalendar getEndTime()
 	{
 		return endTime;

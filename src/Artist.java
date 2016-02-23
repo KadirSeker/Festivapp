@@ -1,10 +1,13 @@
+import java.io.Serializable;
+
 /**
  * 
  * @author Joshua
  * @version 1.0
  *
  */
-public class Artist {
+public class Artist implements Serializable 
+{
 
 	private String name;
 	private String genre;
@@ -33,21 +36,33 @@ public class Artist {
 	
 	
 	
-	
+	/**
+	 * 
+	 * @param n name
+	 */
 	public void setName(String n)
 	{
 		name = n;
 	}
 	
+	/**
+	 * 
+	 * @param g genre
+	 */
 	public void setGenre(String g)
 	{
 		genre = g;
 	}
 	
+	/**
+	 * 
+	 * @param p popularity
+	 */
 	public void setPopularity(double p)
 	{
 		popularity = p;
 	}
+	
 	
 	public String getName()
 	{

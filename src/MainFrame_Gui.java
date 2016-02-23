@@ -336,7 +336,6 @@ public class MainFrame_Gui extends JFrame
 		JButton button = new JButton();
 		button.setPreferredSize(textFieldSize);
 		button.setText("Add Artist");
-<<<<<<< HEAD
 		button.addActionListener(new ActionListener() {
         
         public void actionPerformed(ActionEvent event) {
@@ -362,7 +361,6 @@ public class MainFrame_Gui extends JFrame
     });
 		
 		
-=======
 		button.addActionListener(new ActionListener()
 		{
 
@@ -389,7 +387,6 @@ public class MainFrame_Gui extends JFrame
 			}
 		});
 
->>>>>>> origin/master
 		JPanel content = new JPanel(new FlowLayout());
 		content.add(name);
 		content.add(nameField);

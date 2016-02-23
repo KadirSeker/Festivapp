@@ -1,10 +1,14 @@
+import java.io.Serializable;
+
 /**
+ * Stage hold a name.
  * 
  * @author Joshua
  * @version 1.0
  *
  */
-public class Stage {
+public class Stage implements Serializable
+{
 
 	private String name;
 	//TODO add dimension?
@@ -14,6 +18,10 @@ public class Stage {
 		
 	}
 	
+	/**
+	 * 
+	 * @param n - name of the stage
+	 */
 	public Stage(String n)
 	{
 		name = n;
@@ -23,12 +31,17 @@ public class Stage {
 	
 	
 	
-	
+	/**
+	 * @return name of stage
+	 */
 	public String getName()
 	{
 		return name;
 	}
 	
+	/**
+	 * @param n name of stage
+	 */
 	public void setName(String n)
 	{
 		name = n;
