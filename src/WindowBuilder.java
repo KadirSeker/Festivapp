@@ -8,7 +8,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 
-public class test {
+/**
+ * remove after all windows have been build
+ * @author Joshua
+ *
+ */
+public class WindowBuilder {
 
 	private JFrame frame;
 	private JTextField textField;
@@ -25,7 +30,7 @@ public class test {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					test window = new test();
+					WindowBuilder window = new WindowBuilder();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,7 +42,7 @@ public class test {
 	/**
 	 * Create the application.
 	 */
-	public test() {
+	public WindowBuilder() {
 		initialize();
 	}
 

@@ -1,6 +1,5 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -17,7 +16,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class MainFrame_Gui 
@@ -52,6 +50,7 @@ public class MainFrame_Gui
 	{
 		menuItems = new JMenu[5];
 		initialize();
+		
 
 	}
 
@@ -60,6 +59,11 @@ public class MainFrame_Gui
 	 */
 	private void initialize()
 	{
+		
+		Testing test = new Testing();
+		agenda = test.getAgenda();
+		//@delete after done
+		
 		frame = new JFrame("FestiFapp");
 		frame.setSize(screenSize);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

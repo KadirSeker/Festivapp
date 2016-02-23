@@ -17,7 +17,7 @@ public class Performance implements Serializable {
 	
 	private ArrayList<Artist> artists;
 	private Stage stage;
-	private GregorianCalendar startTime,endTime;
+	private Time startTime,endTime;
 	
 	public Performance()
 	{
@@ -31,7 +31,7 @@ public class Performance implements Serializable {
 	 * @param startTime 	an GregorianCalendar StartTime
 	 * @param endTime		an GregorianCalendar EndTime
 	 */
-	public Performance(Stage s,GregorianCalendar startTime, GregorianCalendar endTime)
+	public Performance(Stage s,Time startTime, Time endTime)
 	{
 		artists = new ArrayList<Artist>();
 		stage = s;
@@ -78,7 +78,7 @@ public class Performance implements Serializable {
 	 * 
 	 * @return startTime
 	 */
-	public GregorianCalendar getStartTime()
+	public Time getStartTime()
 	{
 		return startTime;
 	}
@@ -87,7 +87,7 @@ public class Performance implements Serializable {
 	 * 
 	 * @return endtime 
 	 */
-	public GregorianCalendar getEndTime()
+	public Time getEndTime()
 	{
 		return endTime;
 	}
