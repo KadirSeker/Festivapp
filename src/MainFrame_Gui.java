@@ -20,7 +20,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class MainFrame_Gui extends JFrame
+public class MainFrame_Gui
 {
 
 	private JFrame frame;
@@ -62,7 +62,7 @@ public class MainFrame_Gui extends JFrame
 	{
 		frame = new JFrame("Festivapp");
 		frame.setSize(screenSize);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 
 		menuBar = new JMenuBar();
@@ -412,7 +412,7 @@ public void windowClosing(java.awt.event.WindowEvent windowEvent)
 		
 		addPerformanceFrame.getContentPane().setLayout(null);
 		
-		JLabel addArtistToLabel = new JLabel("add artist to performance");
+		JLabel addArtistToLabel = new JLabel("Add artist to performance");
 		addArtistToLabel.setBounds(12, 41, 203, 16);
 		addPerformanceFrame.getContentPane().add(addArtistToLabel);
 		
@@ -420,7 +420,7 @@ public void windowClosing(java.awt.event.WindowEvent windowEvent)
 		comboBox.setBounds(227, 41, 95, 22);
 		addPerformanceFrame.getContentPane().add(comboBox);
 		
-		JLabel removeArtistFromLabel = new JLabel("unadd artist to performance");
+		JLabel removeArtistFromLabel = new JLabel("Unadd artist to performance");
 		removeArtistFromLabel.setBounds(12, 73, 203, 16);
 		addPerformanceFrame.getContentPane().add(removeArtistFromLabel);
 		
