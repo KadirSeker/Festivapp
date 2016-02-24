@@ -1,6 +1,5 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -17,7 +16,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class MainFrame_Gui
@@ -332,9 +330,9 @@ public void windowClosing(java.awt.event.WindowEvent windowEvent)
 		JLabel name = new JLabel();
 		JLabel genre = new JLabel();
 		JLabel popularity = new JLabel();
-		name.setText("Please enter the Artist name");
-		genre.setText("Please Enter the music Genre");
-		popularity.setText("Please Enter the Artist Popularity");
+		name.setText("Artist name: ");
+		genre.setText("Music genre: ");
+		popularity.setText("Artist popularity: ");
 		name.setBounds(12, 66, 200, 16);
 		genre.setBounds(12, 101, 200, 16);
 		popularity.setBounds(12, 135, 200, 16);
@@ -356,16 +354,23 @@ public void windowClosing(java.awt.event.WindowEvent windowEvent)
         public void actionPerformed(ActionEvent event) {
             String nameInput = nameField.getText();
             String genreInput = genreField.getText();
-            String popInput = popularityField.getText();
+            String popularityInput = popularityField.getText();	
+        
+            try
+            {
+                popularityInput = popularityInput.replace(',','.');
+            	Double.parseDouble(popularityInput);
+            }
+            catch(NumberFormatException pe)
+            {
+            	JOptionPane.showMessageDialog(addArtistFrame, "Please enter a numeric value for the artist popularity.");
+            }
             
-         
-            
-            if(nameInput.length() > 0 && genreInput.length() > 0 && popInput.length() > 0)
-            { //TODO fix the input can be 10 
-            double popularity = Double.parseDouble(popInput);
-            Artist artist = new Artist(nameInput,genreInput,popularity);
-            agenda.addArtist(artist);
-            //System.out.println(artist.getName()+ artist.getGenre() + artist.getPopularity());
+            if(nameInput.length() > 0 && genreInput.length() > 0 && popularityInput.length() > 0)
+            {  
+            	double popularity = Double.parseDouble(popularityInput);
+            	Artist artist = new Artist(nameInput,genreInput,popularity);
+            	agenda.addArtist(artist);  
             }
             else
             {
