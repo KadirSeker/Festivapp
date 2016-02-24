@@ -15,14 +15,13 @@ import java.util.GregorianCalendar;
  */
 public class Performance implements Serializable {
 	
-	private ArrayList<Artist> artists;
+	private Artist artist;
 	private Stage stage;
 	private GregorianCalendar startTime,endTime;
 	
 	public Performance()
 	{
-		artists = new ArrayList<Artist>();
-		
+	
 	}
 	
 	/**
@@ -31,38 +30,21 @@ public class Performance implements Serializable {
 	 * @param startTime 	an GregorianCalendar StartTime
 	 * @param endTime		an GregorianCalendar EndTime
 	 */
-	public Performance(Stage s,GregorianCalendar startTime, GregorianCalendar endTime)
+	public Performance(Artist a, Stage s,GregorianCalendar startTime, GregorianCalendar endTime)
 	{
-		artists = new ArrayList<Artist>();
+		artist = a;
 		stage = s;
 		this.startTime = startTime;
 		this.endTime = endTime;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	/**
-	 * @param a artist an artist object
-	 */
-	public void addArtist(Artist a)
-	{
-		artists.add(a);
-	}
-	
-	
 	/**
 	 * 
 	 * @return arraylist of all artists from the performance
 	 */
-	public ArrayList<Artist> getArtists()
+	public Artist getArtists()
 	{
-		return artists;
+		return artist;
 	}
 	
 	/**
