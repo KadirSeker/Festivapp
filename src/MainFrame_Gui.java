@@ -359,17 +359,24 @@ public void windowClosing(java.awt.event.WindowEvent windowEvent)
             String popInput = popularityField.getText();
             
          
-            
-            if(nameInput.length() > 0 && genreInput.length() > 0 && popInput.length() > 0)
-            { //TODO fix the input can be 10 
-            double popularity = Double.parseDouble(popInput);
-            Artist artist = new Artist(nameInput,genreInput,popularity);
-            agenda.addArtist(artist);
-            //System.out.println(artist.getName()+ artist.getGenre() + artist.getPopularity());
-            }
-            else
+            try
             {
-            	JOptionPane.showMessageDialog(addArtistFrame, "One of the fields is not filled in correctly. Artist is not saved!");
+            	int popularity = Integer.parseInt(popInput);
+            	if(nameInput.length() > 0 && genreInput.length() > 0 && popInput.length() > 0)
+                { 
+                
+                	Artist artist = new Artist(nameInput,genreInput,popularity);
+                	agenda.addArtist(artist);
+                
+                }
+                else
+                {
+                	JOptionPane.showMessageDialog(addArtistFrame, "One of the fields is not filled in correctly. Artist is not saved!");
+                }
+            }
+            catch(NumberFormatException nf)
+            {
+            	JOptionPane.showMessageDialog(addArtistFrame, "Please enter a whole number for popularity.");
             }
             
         }
@@ -420,7 +427,7 @@ public void windowClosing(java.awt.event.WindowEvent windowEvent)
 		comboBox.setBounds(227, 41, 95, 22);
 		addPerformanceFrame.getContentPane().add(comboBox);
 		
-		JLabel removeArtistFromLabel = new JLabel("Unadd artist to performance");
+		JLabel removeArtistFromLabel = new JLabel("Remove artist from performance");
 		removeArtistFromLabel.setBounds(12, 73, 203, 16);
 		addPerformanceFrame.getContentPane().add(removeArtistFromLabel);
 		

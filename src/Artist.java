@@ -11,7 +11,7 @@ public class Artist implements Serializable
 
 	private String name;
 	private String genre;
-	private double popularity;
+	private int popularity;
 	//TODO here comes an image of artist?
 	
 	public Artist()
@@ -25,7 +25,7 @@ public class Artist implements Serializable
 	 * @param g Genre
 	 * @param p Popularity
 	 */
-	public Artist(String n, String g, double p)
+	public Artist(String n, String g, int p)
 	{
 		name = n;
 		genre = g;
@@ -58,7 +58,7 @@ public class Artist implements Serializable
 	 * 
 	 * @param p popularity
 	 */
-	public void setPopularity(double p)
+	public void setPopularity(int p)
 	{
 		popularity = p;
 	}
