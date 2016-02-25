@@ -332,9 +332,9 @@ public void windowClosing(java.awt.event.WindowEvent windowEvent)
 		JLabel name = new JLabel();
 		JLabel genre = new JLabel();
 		JLabel popularity = new JLabel();
-		name.setText("Please enter the Artist name");
-		genre.setText("Please Enter the music Genre");
-		popularity.setText("Please Enter the Artist Popularity");
+		name.setText("Artist name: ");
+		genre.setText("Music genre: ");
+		popularity.setText("Artist popularity: ");
 		name.setBounds(12, 66, 200, 16);
 		genre.setBounds(12, 101, 200, 16);
 		popularity.setBounds(12, 135, 200, 16);
